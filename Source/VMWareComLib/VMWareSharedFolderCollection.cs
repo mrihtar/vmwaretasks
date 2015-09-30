@@ -24,9 +24,32 @@ namespace Vestris.VMWareComLib
             _coll = coll;
         }
 
+        public void Add(string shareName, string hostPath, int flags)
+        {
+            Vestris.VMWareLib.VMWareSharedFolder SharedFolder;
+            SharedFolder = new Vestris.VMWareLib.VMWareSharedFolder(shareName, hostPath, flags);
+            _coll.Add(SharedFolder);
+        }
+
         public void Clear()
         {
             _coll.Clear();
+        }
+
+        public bool Contains(string shareName)
+        {
+            for (int ii = 0; ii < _coll.Count; ii++)
+                if (_coll[ii].ShareName == shareName)
+                    return true;
+            return false;
+        }
+
+        public bool Remove(string shareName)
+        {
+            for (int ii = 0; ii < _coll.Count; ii++)
+                if (_coll[ii].ShareName == shareName)
+                    return _coll.Remove(_coll[ii]);
+            return false;
         }
 
         public int Count

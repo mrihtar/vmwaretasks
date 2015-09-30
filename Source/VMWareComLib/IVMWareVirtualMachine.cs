@@ -84,6 +84,7 @@ namespace Vestris.VMWareComLib
         void WaitForToolsInGuest();
         void WaitForToolsInGuest2(int timeoutInSeconds);
         IVMWareRootSnapshotCollection Snapshots { get; }
+        IVMWareSharedFolderCollection SharedFolders { get; }
         IVMWareSnapshot BeginRecording(string name, string description);
         IVMWareSnapshot BeginRecording2(string name, string description, int timeoutInSeconds);
     }
