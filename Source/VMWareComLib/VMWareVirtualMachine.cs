@@ -2,6 +2,7 @@
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace Vestris.VMWareComLib
 {
@@ -525,14 +526,14 @@ namespace Vestris.VMWareComLib
             _vm.Unpause(timeoutInSeconds);
         }
 
-        public string[] ListDirectoryInGuest(string pathName, bool recurse)
+        public object ListDirectoryInGuest(string pathName, bool recurse)
         {
-            return _vm.ListDirectoryInGuest(pathName, recurse).ToArray();
+            return _vm.ListDirectoryInGuest(pathName, recurse).Cast<object>().ToArray();
         }
 
-        public string[] ListDirectoryInGuest2(string pathName, bool recurse, int timeoutInSeconds)
+        public object ListDirectoryInGuest2(string pathName, bool recurse, int timeoutInSeconds)
         {
-            return _vm.ListDirectoryInGuest(pathName, recurse, timeoutInSeconds).ToArray();
+            return _vm.ListDirectoryInGuest(pathName, recurse, timeoutInSeconds).Cast<object>().ToArray();
         }
 
         public IVariableIndexer GuestEnvironmentVariables

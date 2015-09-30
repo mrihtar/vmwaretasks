@@ -22,8 +22,13 @@ namespace Vestris.VMWareComLib
         IVMWareVirtualMachine Open2(string fileName, int timeoutInSeconds);
         void Register(string fileName);
         void Register2(string fileName, int timeoutInSeconds);
-        IVMWareVirtualMachine[] RegisteredVirtualMachines { get; }
-        IVMWareVirtualMachine[] RunningVirtualMachines { get; }
+        object RegisteredVirtualMachines {
+            [return: MarshalAs(UnmanagedType.Struct, SafeArraySubType = VarEnum.VT_ARRAY)]
+            get; }
+        object RunningVirtualMachines {
+            [return: MarshalAs(UnmanagedType.Struct, SafeArraySubType = VarEnum.VT_ARRAY)]
+            get;
+        }
         void Unregister(string fileName);
         void Unregister2(string fileName, int timeoutInSeconds);
     }

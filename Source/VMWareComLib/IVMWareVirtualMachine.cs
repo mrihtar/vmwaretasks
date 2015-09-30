@@ -47,8 +47,8 @@ namespace Vestris.VMWareComLib
         bool IsReplaying { get; }
         bool IsRunning { get; }
         bool IsSuspended { get; }
-        string[] ListDirectoryInGuest(string pathName, bool recurse);
-        string[] ListDirectoryInGuest2(string pathName, bool recurse, int timeoutInSeconds);
+        object ListDirectoryInGuest(string pathName, bool recurse);
+        object ListDirectoryInGuest2(string pathName, bool recurse, int timeoutInSeconds);
         void LoginInGuest(string username, string password);
         void LoginInGuest2(string username, string password, int options, int timeoutInSeconds);
         void WaitForVMWareUserProcessInGuest(string username, string password);

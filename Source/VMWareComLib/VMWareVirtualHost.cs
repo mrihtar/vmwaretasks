@@ -2,6 +2,7 @@
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Vestris.VMWareComLib
 {
@@ -94,7 +95,7 @@ namespace Vestris.VMWareComLib
             }
         }
 
-        public IVMWareVirtualMachine[] RunningVirtualMachines
+        public object RunningVirtualMachines
         {
             get
             {
@@ -103,11 +104,11 @@ namespace Vestris.VMWareComLib
                 {
                     virtualMachines.Add(new VMWareVirtualMachine(vm));
                 }
-                return virtualMachines.ToArray();
+                return virtualMachines.Cast<object>().ToArray();
             }
         }
 
-        public IVMWareVirtualMachine[] RegisteredVirtualMachines
+        public object RegisteredVirtualMachines
         {
             get
             {
@@ -116,7 +117,7 @@ namespace Vestris.VMWareComLib
                 {
                     virtualMachines.Add(new VMWareVirtualMachine(vm));
                 }
-                return virtualMachines.ToArray();
+                return virtualMachines.Cast<object>().ToArray();
             }
         }
     }
