@@ -14,6 +14,7 @@ namespace Vestris.VMWareComLib
         void ConnectToVMWareServer(string hostName, string username, string password);
         void ConnectToVMWareServer2(string hostName, string username, string password, int timeoutInSeconds);
         void ConnectToVMWareVIServer(string hostName, string username, string password);
+        void ConnectToVMWareVIServer2(string hostName, string username, string password, int timeoutInSeconds);
         void ConnectToVMWareWorkstation();
         void ConnectToVMWareWorkstation2(int timeoutInSeconds);
         void Disconnect();
@@ -22,13 +23,8 @@ namespace Vestris.VMWareComLib
         IVMWareVirtualMachine Open2(string fileName, int timeoutInSeconds);
         void Register(string fileName);
         void Register2(string fileName, int timeoutInSeconds);
-        object RegisteredVirtualMachines {
-            [return: MarshalAs(UnmanagedType.Struct, SafeArraySubType = VarEnum.VT_ARRAY)]
-            get; }
-        object RunningVirtualMachines {
-            [return: MarshalAs(UnmanagedType.Struct, SafeArraySubType = VarEnum.VT_ARRAY)]
-            get;
-        }
+        object RegisteredVirtualMachines { get; }
+        object RunningVirtualMachines { get; }
         void Unregister(string fileName);
         void Unregister2(string fileName, int timeoutInSeconds);
     }

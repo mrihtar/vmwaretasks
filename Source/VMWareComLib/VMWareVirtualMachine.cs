@@ -3,6 +3,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Vestris.VMWareComLib
 {
@@ -296,6 +297,19 @@ namespace Vestris.VMWareComLib
             }
         }
 
+        public object SnapshotsList
+        {
+            get
+            {
+                List<VMWareSnapshot> result = new List<VMWareSnapshot>(_vm.Snapshots.Count);
+                foreach (Vestris.VMWareLib.VMWareSnapshot snapshot in _vm.Snapshots)
+                {
+                    result.Add(new VMWareSnapshot(snapshot));
+                }
+                return result.Cast<object>().ToArray();
+            }
+        }
+
         public void LoginInGuest(string username, string password)
         {
             _vm.LoginInGuest(username, password);
@@ -565,6 +579,19 @@ namespace Vestris.VMWareComLib
             get
             {
                 return new VMWareSharedFolderCollection(_vm.SharedFolders);
+            }
+        }
+
+        public object SharedFoldersList
+        {
+            get
+            {
+                List<VMWareSharedFolder> result = new List<VMWareSharedFolder>(_vm.SharedFolders.Count);
+                foreach (Vestris.VMWareLib.VMWareSharedFolder sharedFolder in _vm.SharedFolders)
+                {
+                    result.Add(new VMWareSharedFolder(sharedFolder));
+                }
+                return result.Cast<object>().ToArray();
             }
         }
 

@@ -16,5 +16,9 @@ namespace Vestris.VMWareComLib
         IVMWareSnapshot GetCurrentSnapshot();
         IVMWareSnapshot GetNamedSnapshot(string name);
         void RemoveSnapshot(string name);
+        IVMWareSnapshot FindSnapshot(string pathToSnapshot);
+        IVMWareSnapshot FindSnapshotByName(string name);
+        object FindSnapshotsByName(string name);
+        int Count { get; }
     }
 }

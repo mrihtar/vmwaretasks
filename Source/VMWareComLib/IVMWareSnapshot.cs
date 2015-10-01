@@ -26,5 +26,6 @@ namespace Vestris.VMWareComLib
         void RevertToSnapshot();
         void RevertToSnapshot2(int powerOnOptions, int timeoutInSeconds);
         IVMWareSnapshotCollection ChildSnapshots { get; }
+        object ChildSnapshotsList { get; }
     }
 }

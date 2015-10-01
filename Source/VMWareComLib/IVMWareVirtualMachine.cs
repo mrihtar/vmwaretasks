@@ -75,6 +75,7 @@ namespace Vestris.VMWareComLib
         IProcess RunScriptInGuest2(string interpreter, string scriptText, int options, int timeoutInSeconds);
         IVariableIndexer RuntimeConfigVariables { get; }
         void ShutdownGuest();
+        void ShutdownGuest2(int timeoutInSeconds);
         void Suspend();
         void Suspend2(int timeoutInSeconds);
         void Unpause();
@@ -84,7 +85,9 @@ namespace Vestris.VMWareComLib
         void WaitForToolsInGuest();
         void WaitForToolsInGuest2(int timeoutInSeconds);
         IVMWareRootSnapshotCollection Snapshots { get; }
+        object SnapshotsList { get; }
         IVMWareSharedFolderCollection SharedFolders { get; }
+        object SharedFoldersList { get; }
         IVMWareSnapshot BeginRecording(string name, string description);
         IVMWareSnapshot BeginRecording2(string name, string description, int timeoutInSeconds);
     }

@@ -75,5 +75,15 @@ namespace Vestris.VMWareComLib
                 return new VMWareSharedFolder(_coll[index]);
             }
         }
+
+        public void SetState(string shareName, string hostPath, int flags)
+        {
+            for (int ii = 0; ii < _coll.Count; ii++)
+                if (_coll[ii].ShareName == shareName && _coll[ii].HostPath == hostPath)
+                {
+                    _coll.SetState(_coll[ii], flags);
+                    return;
+                }
+        }
     }
 }

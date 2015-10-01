@@ -247,6 +247,31 @@ namespace Vestris.VMWareLib
         }
 
         /// <summary>
+        /// Changes state of shared folder. 
+        /// </summary>
+        /// <param name="sharedFolder">The shared folder to change state.</param>
+        /// <param name="flags">New state.</param>
+        public void SetState(VMWareSharedFolder sharedFolder, int flags)
+        {
+            try
+            {
+                VMWareJobCallback callback = new VMWareJobCallback();
+                using (VMWareJob job = new VMWareJob(_vm.SetSharedFolderState(
+                    sharedFolder.ShareName, sharedFolder.HostPath, flags, callback),
+                    callback))
+                {
+                    job.Wait(VMWareInterop.Timeouts.GetSharedFoldersTimeout);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    string.Format("Failed to set shared folder state: shareName=\"{0}\" hostPath=\"{1}\" flags={2}",
+                    sharedFolder.ShareName, sharedFolder.HostPath, flags), ex);
+            }
+        }
+
+        /// <summary>
         /// Dispose the object.
         /// </summary>
         public void Dispose()

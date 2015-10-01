@@ -18,5 +18,6 @@ namespace Vestris.VMWareComLib
         int Count { get; }
         bool Enabled { set; }
         IVMWareSharedFolder this[int index] { get; }
+        void SetState(string shareName, string hostPath, int flags);
     }
 }

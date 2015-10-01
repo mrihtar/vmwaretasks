@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Vestris.VMWareComLib
 {
@@ -57,6 +59,19 @@ namespace Vestris.VMWareComLib
             get
             {
                 return new VMWareSnapshotCollection(_snapshot.ChildSnapshots);
+            }
+        }
+
+        public object ChildSnapshotsList
+        {
+            get
+            {
+                List<VMWareSnapshot> result = new List<VMWareSnapshot>(_snapshot.ChildSnapshots.Count);
+                foreach (Vestris.VMWareLib.VMWareSnapshot snapshot in _snapshot.ChildSnapshots)
+                {
+                    result.Add(new VMWareSnapshot(snapshot));
+                }
+                return result.Cast<object>().ToArray();
             }
         }
 

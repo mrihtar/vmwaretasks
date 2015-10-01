@@ -30,7 +30,7 @@ namespace Vestris.VMWareLib
         /// A list of root snapshots on the current virtual machine.
         /// </summary>
         /// <remarks>
-        /// The list is populated on first access, this may time some time.
+        /// The list is populated on first access, this may take some time.
         /// </remarks>
         /// <returns>A list of snapshots.</returns>
         protected override List<VMWareSnapshot> Snapshots
